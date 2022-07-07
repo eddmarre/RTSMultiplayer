@@ -30,6 +30,17 @@ public class UnitMovement : NetworkBehaviour
         playerAgent.ResetPath();
     }
 
+    [Server]
+    public void ServerMove(Vector3 position)
+    {
+        targeter.ClearTarget();
+
+        //if not valid nav mesh position
+        if (!NavMesh.SamplePosition(position, out NavMeshHit hit, 1f, NavMesh.AllAreas)) return;
+
+        playerAgent.SetDestination(hit.position);
+    }
+
 
     [ServerCallback]
     private void Update()
@@ -61,12 +72,7 @@ public class UnitMovement : NetworkBehaviour
     [Command]
     public void CmdMove(Vector3 position)
     {
-        targeter.ClearTarget();
-
-        //if not valid nav mesh position
-        if (!NavMesh.SamplePosition(position, out NavMeshHit hit, 1f, NavMesh.AllAreas)) return;
-
-        playerAgent.SetDestination(hit.position);
+      ServerMove(position);
     }
 
     #endregion

@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1802459053610060330}
   - component: {fileID: 1802459053610060341}
+  - component: {fileID: 7067651125720457619}
   m_Layer: 0
   m_Name: HealthBarCanvas
   m_TagString: Untagged
@@ -124,7 +125,7 @@ RectTransform:
   - {fileID: 1802459053223614075}
   - {fileID: 1802459054514955900}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -153,6 +154,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &7067651125720457619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802459053610060340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59255771894fe8245ae20bee8f5183e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1802459054514955903
 GameObject:
   m_ObjectHideFlags: 0
