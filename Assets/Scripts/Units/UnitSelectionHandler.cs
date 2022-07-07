@@ -18,6 +18,27 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private RTSPlayer _player;
 
+    private void Start()
+    {
+        Unit.AuthorityOnUnitDespawned += Unit_AuthorityOnUnitDespawned;
+        GameOverHandler.ClientOnGameOver += GameOverHandler_ClientOnGameOver;
+    }
+
+    private void OnDestroy()
+    {
+        Unit.AuthorityOnUnitDespawned -= Unit_AuthorityOnUnitDespawned;
+        GameOverHandler.ClientOnGameOver -= GameOverHandler_ClientOnGameOver;
+    }
+
+    private void Unit_AuthorityOnUnitDespawned(Unit unit)
+    {
+        SelectedUnits.Remove(unit);
+    }
+
+    private void GameOverHandler_ClientOnGameOver(string winner)
+    {
+        enabled = false;
+    }
     private void Update()
     {
         if(_player==null)
@@ -51,12 +72,15 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private void StartSelectionArea()
     {
-        foreach (Unit myUnit in SelectedUnits)
+        if (!Keyboard.current.leftShiftKey.isPressed)
         {
-            myUnit.Deselect();
-        }
+            foreach (Unit myUnit in SelectedUnits)
+            {
+                myUnit.Deselect();
+            }
 
-        SelectedUnits.Clear();
+            SelectedUnits.Clear();
+        }
 
         unitSelectionArea.gameObject.SetActive(true);
 
@@ -94,6 +118,9 @@ public class UnitSelectionHandler : MonoBehaviour
 
         foreach (Unit unit in _player.GetMyUnits())
         {
+            if(SelectedUnits.Contains(unit)) continue;
+            
+            
             Vector3 screenPos = Camera.main.WorldToScreenPoint(unit.transform.position);
 
             if (screenPos.x > min.x && screenPos.x < max.x && 

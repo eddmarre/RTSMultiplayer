@@ -6,10 +6,21 @@ using UnityEngine.EventSystems;
 
 public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
 {
+    [SerializeField] private Health health;
     [SerializeField] private GameObject unitPrefab;
     [SerializeField] private Transform spawnPoint;
 
     #region Server
+
+    public override void OnStartServer()
+    {
+        health.ServerOnDie +=  Health_ServerOnDie;
+    }
+
+    public override void OnStopServer()
+    {
+        health.ServerOnDie -=  Health_ServerOnDie;
+    }
 
     [Command]
     private void CmdSpawnUnit()
@@ -18,6 +29,12 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
 
         //connection to client gives user client control
         NetworkServer.Spawn(unitInstance, connectionToClient);
+    }
+    
+    [Server]
+    private void Health_ServerOnDie()
+    {
+        //NetworkServer.Destroy(gameObject);
     }
 
     #endregion
