@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1303147381293068420}
   - component: {fileID: 1303147381293068417}
   - component: {fileID: 1303147381293068422}
-  - component: {fileID: 1303147381293068423}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -51,7 +50,7 @@ MonoBehaviour:
   autoStartServerBuild: 1
   serverTickRate: 30
   offlineScene: Assets/Scenes/Menu.unity
-  onlineScene: Assets/Scenes/Map1.unity
+  onlineScene: 
   transport: {fileID: 1303147381293068422}
   networkAddress: localhost
   maxConnections: 100
@@ -61,12 +60,16 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
-  - {fileID: 2743348289215555440, guid: b8c62bc89dc84b445802b04e0928363e, type: 3}
   - {fileID: 590890591519053782, guid: ebe273bca1e46734ea83170d0f34394d, type: 3}
-  - {fileID: 3090037624863174926, guid: 248d4f1234f9314458fcf03efe373bb3, type: 3}
   - {fileID: 2864007940487321222, guid: 383d83b4915d30943834bcf773642db4, type: 3}
-  - {fileID: 590890591519053782, guid: 9f0cad2a494018447bd56f6fb2b0e79c, type: 3}
-  unitSpawnerPrefab: {fileID: 590890591519053782, guid: 9f0cad2a494018447bd56f6fb2b0e79c,
+  - {fileID: 590890591519053782, guid: 219db243e5fde9f4793cae17a0cdd671, type: 3}
+  - {fileID: 6637373106280069370, guid: fb75575fd866f7444baf19a4a5362020, type: 3}
+  - {fileID: 6359295618301549524, guid: bb2a60c62fb00a441983d9af8d5cef0d, type: 3}
+  - {fileID: 7717812540738169454, guid: 6160dcefe293ae342a6249483521e58c, type: 3}
+  - {fileID: 7211201199743209737, guid: 20d51013fd2a31142a789d48f53dcae9, type: 3}
+  - {fileID: 3531149692406093740, guid: 6e4e187f88882dd4daba4b02dfb883fe, type: 3}
+  - {fileID: 8834892072061969284, guid: bbbc05122f7b9814faafb67f1a6cd05a, type: 3}
+  unitBasePrefab: {fileID: 590890591519053782, guid: ebe273bca1e46734ea83170d0f34394d,
     type: 3}
   gameOverHandlerPrefab: {fileID: 5174682260551250432, guid: 383d83b4915d30943834bcf773642db4,
     type: 3}
@@ -99,17 +102,3 @@ MonoBehaviour:
   debugLog: 0
   statisticsGUI: 0
   statisticsLog: 0
---- !u!114 &1303147381293068423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303147381293068440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetX: 0
-  offsetY: 0
